@@ -1,5 +1,8 @@
 pipeline {
     agent any 
+        tools {
+        maven 'maventest' 
+    }
       stages {
           stage ('Checkout Git repository') {
               steps {
@@ -8,16 +11,12 @@ pipeline {
           }
           stage ('package stage') {
               steps {
-                  withMaven(maven : 'maventest') {
                  sh 'mvn clean package'
-                  }
               }
           }
          stage ('Test stage') {
               steps {
-                  withMaven(maven : 'maventest') {
                  sh 'mvn test'
-                  }
               }
           }
          stage ('Deploy stage') {
