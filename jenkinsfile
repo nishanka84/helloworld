@@ -3,7 +3,7 @@ pipeline {
       stages {
           stage ('Checkout Git repository') {
               steps {
-                git branch: 'master', url: "https://github.com/nishanka84/helloworld.git"
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/nishanka84/helloworld.git']]])
             }
           }
           stage ('package stage') {
