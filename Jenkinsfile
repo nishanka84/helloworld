@@ -8,14 +8,16 @@ pipeline {
           }
           stage ('package stage') {
               steps {
-                 withMaven(maven : 'maventest')
+                  withMaven(maven : 'maventest') {
                  sh 'mvn clean package'
+                  }
               }
           }
          stage ('Test stage') {
               steps {
-                 withMaven(maven : 'maventest')
+                  withMaven(maven : 'maventest') {
                  sh 'mvn test'
+                  }
               }
           }
          stage ('Deploy stage') {
@@ -24,5 +26,4 @@ pipeline {
               }
           }
       }
-    
 }
