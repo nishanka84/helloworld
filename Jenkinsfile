@@ -8,19 +8,19 @@ pipeline {
           }
           stage ('package stage') {
               steps {
-              withMaven (maven : 'maventest')
-              sh 'mvn clean package'
+                 withMaven(maven : 'maventest')
+                 sh 'mvn clean package'
               }
           }
          stage ('Test stage') {
               steps {
-              withMaven (maven : 'maventest')
-              sh 'mvn test'
+                 withMaven(maven : 'maventest')
+                 sh 'mvn test'
               }
           }
          stage ('Deploy stage') {
               steps {
-              build 'tomcat deploy'
+                build 'tomcat deploy'
               }
           }
       }
